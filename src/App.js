@@ -4,12 +4,22 @@ import Info from './components/Info';
 import Weather from './components/Weather';
 import './App.css';
 
+const API_KEY = "b6920aaed744f380d838b6348869733d";
+
 class App extends Component {
+
+  gettingWeather = async (event) => {
+    event.preventDefault();
+    const api_url = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=Kiev&appid=${API_KEY}`);
+    const data = await api_url.json();
+    console.log(data);
+  }
+
   render() {
     return (
       <div className="App">
         <Info />
-        <Form />
+        <Form weatherMethod = {this.gettingWeather} />
         <Weather />
       </div>
     );
