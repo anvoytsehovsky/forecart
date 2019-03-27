@@ -10,7 +10,8 @@ class App extends Component {
 
   gettingWeather = async (event) => {
     event.preventDefault();
-    const api_url = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=Kiev&appid=${API_KEY}`);
+    const city = event.target.elements.city.value;
+    const api_url = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}`);
     const data = await api_url.json();
     console.log(data);
   }
